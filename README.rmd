@@ -1,6 +1,6 @@
 ---
 title: "Lab 1"
-authors: "Steve Harms"
+authors: "Steve Harms, Yudi Zhang, Gulzina Kuttubekova"
 date: "January 28, 2019"
 output: html_document
 ---
