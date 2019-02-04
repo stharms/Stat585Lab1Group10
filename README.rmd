@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 The file ushcn.tavg.latest.raw.tar.gz at ftp://ftp.ncdc.noaa.gov/pub/data/ushcn/v2.5 contains data on average temperatures across the US. 
 
-1. We have dowonloaded the file, trying to unzip it:
+2. We have dowonloaded the file, trying to unzip it:
 ```{r}
 files <- untar("ushcn.tavg.latest.raw.tar.gz", list = TRUE)
 files
@@ -26,29 +26,17 @@ Now, we will try to find the specific file which contains the temperature data o
 ```{r}
 library(purrr)
 library(dplyr)
-# we will need the previous file
+# choose IA state stations:
+stations %>% filter(STATE == "IA") %>% select(NAME) -> ia_stations
+ia_stations
+# find the COOP ID:
+fort_coop_id <- stations$`COOP ID`[grep("FORT", ia_stations$NAME)]
+fort_coop_id
+
+# download and save the file as data.frame
+fort_dodge_stations <- read_delim(paste("ushcn.v2.5.5.20190204/", fort_coop_id, ".raw.tavg", sep = ""), delim = " ", col_names = FALSE)
+dim(fort_dodge_stations)
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
