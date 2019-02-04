@@ -1,6 +1,6 @@
 ---
 title: "Lab 1"
-authors: "Steve Harms, Yudi Zhang, Gulzina Kuttubekova"
+authors: "Steve Harms, Yudi Zhang, Gulzina Kuttubekova, Atousa Zarindast"
 date: "January 28, 2019"
 output: html_document
 ---
@@ -9,9 +9,47 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+## More weather data
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+The file ushcn.tavg.latest.raw.tar.gz at ftp://ftp.ncdc.noaa.gov/pub/data/ushcn/v2.5 contains data on average temperatures across the US. 
+
+1. We have dowonloaded the file, trying to unzip it:
+```{r}
+files <- untar("ushcn.tavg.latest.raw.tar.gz", list = TRUE)
+files
+```
+From the output above we see that there are 1218 files in total: the first row represent the host folder - "ushcn.v2.5.5.20190204". Host folder contains 1218 files in it. 
+
+Now, we will try to find the specific file which contains the temperature data of my hometown or Fort Dodge IA:
+```{r}
+library(purrr)
+library(dplyr)
+# we will need the previous file
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
