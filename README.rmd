@@ -10,6 +10,14 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 <<<<<<< HEAD
+##Book
+1.) The last word in chapter 15 is "packages", unless you include the footnotes, in which case the last word is "pseudo-class"
+
+2.) The biggest problem I encountered was the number of R packages that we needed to install or update. I counted at least 7 that I needed to install, as well as many others that needed to be updated. Additionally, my R version was out of date and this affected the functionality of several packages as well. One package was not even available on CRAN and had to be installed with devtools. The solution is to be persistent and continue updating until it works. We also need to be careful about namespaces because some of the same command names are used in different packages.
+
+3.) [When things don't work...] Example question: I am trying to install the package 'emo' for R in order to access emojis. It is not available in CRAN. How do I install a package directly in Rstudio if install.packages("emo") does not work.
+
+One solution: following instructions from the emo package github page, I used devtools::install_github("hadley/emo") to install the package. This required me to install devtools package, but it still did not work. There are several dependencies that also needed to be updated and/or reinstalled. I have attempted to reinstall "stringi" twice and reinstalled the developer tools to get this to work
 
 ## More weather data
 
