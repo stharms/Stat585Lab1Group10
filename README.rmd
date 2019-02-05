@@ -9,12 +9,10 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-<<<<<<< HEAD
-
 ##Link to repository on github:
 https://github.com/stharms/Stat585Lab1Group10
 
-##Book
+## Book
 1.) The last word in chapter 15 is "packages", unless you include the footnotes, in which case the last word is "pseudo-class"
 
 2.) The biggest problem I encountered was the number of R packages that we needed to install or update. I counted at least 7 that I needed to install, as well as many others that needed to be updated. Additionally, my R version was out of date and this affected the functionality of several packages as well. One package was not even available on CRAN and had to be installed with devtools. The solution is to be persistent and continue updating until it works. We also need to be careful about namespaces because some of the same command names are used in different packages.
@@ -23,37 +21,8 @@ https://github.com/stharms/Stat585Lab1Group10
 
 One solution: following instructions from the emo package github page, I used devtools::install_github("hadley/emo") to install the package. This required me to install devtools package, but it still did not work. There are several dependencies that also needed to be updated and/or reinstalled. I have attempted to reinstall the "stringi" package twice and reinstalled the developer tools to get this to work, restarting Rstudio each time.
 
+## About Weather Data
 
-## More weather data
-
-The file ushcn.tavg.latest.raw.tar.gz at ftp://ftp.ncdc.noaa.gov/pub/data/ushcn/v2.5 contains data on average temperatures across the US. 
-
-2. We have dowonloaded the file, trying to unzip it:
-```{r}
-files <- untar("ushcn.tavg.latest.raw.tar.gz", list = TRUE)
-files
-```
-From the output above we see that there are 1218 files in total: the first row represent the host folder - "ushcn.v2.5.5.20190204". Host folder contains 1218 files in it. 
-
-Now, we will try to find the specific file which contains the temperature data of my hometown or Fort Dodge IA:
-```{r}
-library(purrr)
-library(dplyr)
-# choose IA state stations:
-stations %>% filter(STATE == "IA") %>% select(NAME) -> ia_stations
-ia_stations
-# find the COOP ID:
-fort_coop_id <- stations$`COOP ID`[grep("FORT", ia_stations$NAME)]
-fort_coop_id
-
-# download and save the file as data.frame
-fort_dodge_stations <- read_delim(paste("ushcn.v2.5.5.20190204/", fort_coop_id, ".raw.tavg", sep = ""), delim = " ", col_names = FALSE)
-dim(fort_dodge_stations)
-```
-
-
-
-=======
 ```{r}
 library(tidyverse)
 library(readr)
@@ -104,4 +73,29 @@ ggplot(data = states) +
   guides(fill = FALSE)
 ```
 
+## More weather data
 
+The file ushcn.tavg.latest.raw.tar.gz at ftp://ftp.ncdc.noaa.gov/pub/data/ushcn/v2.5 contains data on average temperatures across the US. 
+
+2. We have dowonloaded the file, trying to unzip it:
+```{r}
+files <- untar("ushcn.tavg.latest.raw.tar.gz", list = TRUE)
+files
+```
+From the output above we see that there are 1218 files in total: the first row represent the host folder - "ushcn.v2.5.5.20190204". Host folder contains 1218 files in it. 
+
+Now, we will try to find the specific file which contains the temperature data of my hometown or Fort Dodge IA:
+```{r}
+library(purrr)
+library(dplyr)
+# choose IA state stations:
+stations %>% filter(STATE == "IA") %>% select(NAME) -> ia_stations
+ia_stations
+# find the COOP ID:
+fort_coop_id <- stations$`COOP ID`[grep("FORT", ia_stations$NAME)]
+fort_coop_id
+
+# download and save the file as data.frame
+fort_dodge_stations <- read_delim(paste("ushcn.v2.5.5.20190204/", fort_coop_id, ".raw.tavg", sep = ""), delim = " ", col_names = FALSE)
+dim(fort_dodge_stations)
+```
