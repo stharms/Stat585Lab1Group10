@@ -72,7 +72,7 @@ files
 ```
 From the output above we see that there are 1218 files in total: the first row represent the host folder - "ushcn.v2.5.5.20190204". Host folder contains 1218 files in it. 
 
-Now, we will try to find the specific file which contains the temperature data of my hometown or Fort Dodge IA:
+Now, we will try to find the specific file which contains the temperature data of my hometown or Fort Dodge IA. The file name for Fort Dodge IA is **ushcn.v2.5.5.20190205/USH00132999.raw.tavg**
 ```{r}
 library(purrr)
 library(dplyr)
