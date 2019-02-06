@@ -52,11 +52,11 @@ weather <- read_fwf(file = "./ushcn-v2.5-stations.txt",
                              UTC = c(94,95)))
 map <- map_data("state")
 weather$UTC <- as.factor(weather$UTC)
+weather$ELEVATION <- as.numeric(weather$ELEVATION)
 map %>% 
   ggplot() + 
-  geom_polygon(aes(x = long, y = lat, group = group), fill = "grey40", 
-        colour = "grey90", alpha = 1) +
-  geom_point(data = weather, aes(x = LATITUDE, y = LONGITUDE, colour = ELEVATION, shape = UTC)) +
+  geom_polygon(aes(x = long, y = lat, group = group), fill = "grey40", colour = "grey90", alpha = 1) +
+  geom_point(data = weather, aes(y = LATITUDE, x = LONGITUDE, colour = ELEVATION, shape = UTC)) +
   labs(x = "LATITUDE", y = "LONGITUDE")
 
 ```
