@@ -12,4 +12,3 @@ Yudi is updating this from Rstudio
 
 ## 02/04/19
 - Gulzina is working on Weather data/unzip
->>>>>>> b44d98cc83edd84afa3cad67cad1665dc886e201
